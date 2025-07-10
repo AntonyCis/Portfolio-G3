@@ -12,49 +12,101 @@ header{
 }
 
 .navbar__container {
-    /* border: 1px solid red; */
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative; 
 }
-
 
 .navbar__logo {
-    margin: 0;
+    margin-left: 1rem;
     font-size: 1.8rem;
-    text-transform: uppercase;
-    font-weight: 900;
+    font-weight: bold;
+    color: var(--colorPrimario);
 }
 
-.navbar__menu{
-    padding: 0;
+.header__hamburger {
+    display: none;
+    font-size: 2.5rem;
+    color: var(--colorSecundario);
+    cursor: pointer;
+}
+
+.header__barra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
-
-.navbar__menu a {
-    color: var(--primary);
-    font-size: 1.2rem;
-    font-weight: 600;
-    display: block;
-    text-align: left;
+.navbar__menu li a,
+.navbar__menu li .link {
+    text-decoration: none;
+    color: var(--colorTexto);
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-.navbar__menu a:hover{
-    color: var(--secondary);
+.navbar__menu li a:hover,
+.navbar__menu li .link:hover {
+    color: var(--colorPrimario);
+    font-weight: 900;
     text-decoration: underline;
 }
 
-
-@media(width>=768px){
-    .navbar__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem .5rem;
+@media (width <= 768px) {
+    .header__hamburger {
+        display: block;
     }
-    .navbar__menu{
-        display: flex;
+
+    .header__barra {
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: var(--portfolio);
+        color: white; 
+        padding: 0 1rem;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+        z-index: 1000;
+        border-radius: 0 0 10px 10px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    }
+
+    .header__barra.active {
+        max-height: 300px;
+        padding: 1rem;
+        opacity: 1;
+    }
+
+    .navbar__menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
+    }
+
+    .navbar__menu li a,
+    .navbar__menu li .link {
+        color: white; 
+    }
+
+    .navbar__menu li a:hover,
+    .navbar__menu li .link:hover {
+        color: var(--colorPrimario);
+        font-weight: bold;
+        text-decoration: underline;
     }
 }

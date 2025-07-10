@@ -9,8 +9,16 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import './App.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useEffect } from "react";
+import AOS from "aos";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
   return (
     <BrowserRouter>
